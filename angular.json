@@ -3,5 +3,37 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-  }
+    "dn-schematics": {
+      "projectType": "library",
+      "root": "projects/dn-schematics",
+      "sourceRoot": "projects/dn-schematics/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/dn-schematics/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/dn-schematics/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/dn-schematics/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/dn-schematics/src/test.ts",
+            "tsConfig": "projects/dn-schematics/tsconfig.spec.json",
+            "karmaConfig": "projects/dn-schematics/karma.conf.js"
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "dn-schematics"
 }

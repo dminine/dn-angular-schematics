@@ -1,0 +1,13 @@
+import { Injectable } from '@angular/core';
+import firebase from 'firebase/compat/app';
+import { FirestoreDbAdapter } from '../../../../../../src/modules/firebase/firestore-db.adapter';
+import { <%= classify(name) %> } from '../../../../../../src/entities/<%= camelize(name) %>/types';
+
+@Injectable({
+  providedIn: 'root',
+})
+export class Ng<%= classify(name) %>Db extends FirestoreDbAdapter<<%= classify(name) %>> {
+  constructor() {
+    super(firebase.firestore(), '<%= camelize(name) %>s');
+  }
+}

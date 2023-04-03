@@ -1,27 +1,36 @@
-# DnAngularSchematics
+# 드민스 네트워크 Angular Schematics 
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.5.
+### ng generate dn-schematics:entity-service --name ${name}
 
-## Development server
+생성되는 파일 및 위치
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+1. src/entities/${name}/${name}.service.ts
+2. src/entities/${name}/types.ts
+3. projects/${library-project-name}/src/lib/db/${name}/${name}.service.ts
+4. projects/${library-project-name}/src/lib/db/${name}/${name}.db.ts
 
-## Code scaffolding
+예제: kevin projects 의 board entity 추가
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```
+ng generate dn-schematics:entity-service --name board
 
-## Build
+CREATE src/entities/board/board.service.ts (1600 bytes)
+CREATE src/entities/board/types.ts (100 bytes)
+CREATE projects/kevin/src/lib/db/board/board.service.ts (338 bytes)
+CREATE projects/kevin/src/lib/db/board/board.db.ts (420 bytes)
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## Running unit tests
+### 추가로 확인 해야 하는 부분
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+${name}.db.ts의 collectionName property 는 ${name} + s 로 구성되어 있다.
 
-## Running end-to-end tests
+일반 s가 아니고 es 혹은 ies 같은 경우 따로 수정을 진행 해줘야 한다.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+```ts
+export class NgBoardDb extends FirestoreDbAdapter<Board> {
+  constructor() {
+    super(firebase.firestore(), 'boards'); <-- 해당 부분
+  }
+}
+```

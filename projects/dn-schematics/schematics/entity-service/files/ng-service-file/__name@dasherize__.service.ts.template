@@ -1,0 +1,12 @@
+import { Injectable } from '@angular/core';
+import { <%= classify(name) %>Service } from '../../../../../../src/entities/<%= camelize(name) %>/<%= camelize(name) %>.service';
+import { Ng<%= classify(name) %>Db } from './<%= camelize(name) %>.db';
+
+@Injectable({
+  providedIn: 'root',
+})
+export class Ng<%= classify(name) %>Service extends <%= classify(name) %>Service {
+  constructor(protected override <%= camelize(name) %>Db: Ng<%= classify(name) %>Db) {
+    super(<%= camelize(name) %>Db);
+  }
+}

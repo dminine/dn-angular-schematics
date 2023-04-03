@@ -1,0 +1,28 @@
+{
+  "name": "dn-schematics",
+  "version": "0.0.9",
+  "author": "KevinYo",
+  "publishConfig": {
+    "registry": "http://localhost:4873"
+  },
+  "scripts": {
+    "build": "../../node_modules/.bin/tsc -p tsconfig.schematics.json",
+    "copy:schemas": "rsync -R schematics/*/schema.json ../../dist/dn-schematics/",
+    "copy:files": "rsync -R schematics/*/files/**/** ../../dist/dn-schematics/",
+    "copy:collection": "cp schematics/collection.json ../../dist/dn-schematics/schematics/collection.json",
+    "postbuild": "npm run copy:schemas && npm run copy:files && npm run copy:collection",
+    "link": "sudo npm link ../../dist/dn-schematics",
+    "unlink": "sudo npm unlink ../../dist/dn-schematics"
+  },
+  "peerDependencies": {
+    "@angular/common": "^13.2.0",
+    "@angular/core": "^13.2.0"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "schematics": "./schematics/collection.json",
+  "ng-add": {
+    "save": "devDependencies"
+  }
+}

@@ -1,0 +1,63 @@
+import { <%= classify(name) %> } from './types';
+import { DbAdapter } from '../../core/db/db.adapter';
+import {
+  ColdObservableOnce,
+  HotObservableOnce,
+  InfinityList,
+  PaginationList,
+} from '../../core/types';
+import {
+  DbListResponse,
+  DbOptions,
+  DbQuery,
+} from '../../core/db/types';
+import {
+  makeDbInfinityList,
+  makeDbPaginationList,
+} from '../../core/db/utils';
+import firebase from 'firebase/compat';
+import DocumentSnapshot = firebase.firestore.DocumentSnapshot;
+import DocumentData = firebase.firestore.DocumentData;
+
+export class <%= classify(name) %>Service {
+  constructor(
+    protected <%= camelize(name) %>Db: DbAdapter<<%= classify(name) %>>,
+  ) {}
+
+  getDocumentSnapShot(
+    id: string
+  ): ColdObservableOnce<DocumentSnapshot<DocumentData>> {
+    return this.<%= camelize(name) %>Db.getDocumentSnapShot(id);
+  }
+
+  list(
+    query?: DbQuery,
+    options?: DbOptions
+  ): ColdObservableOnce<DbListResponse<<%= classify(name) %>>> {
+    return this.<%= camelize(name) %>Db.list(query, options);
+  }
+
+  paginationList(query: DbQuery, options?: DbOptions): PaginationList<<%= classify(name) %>> {
+    return makeDbPaginationList(this.<%= camelize(name) %>Db, query, options);
+  }
+
+  infinityList(query: DbQuery, options?: DbOptions): InfinityList<<%= classify(name) %>> {
+    return makeDbInfinityList(this.<%= camelize(name) %>Db, query, options);
+  }
+
+  get(id: string): ColdObservableOnce<<%= classify(name) %>> {
+    return this.<%= camelize(name) %>Db.get(id);
+  }
+
+  add(<%= classify(name) %>: Partial<<%= classify(name) %>>): HotObservableOnce<<%= classify(name) %>> {
+    return this.<%= camelize(name) %>Db.add(<%= classify(name) %>);
+  }
+
+  update(id: string, <%= classify(name) %>: Partial<<%= classify(name) %>>): HotObservableOnce<void> {
+    return this.<%= camelize(name) %>Db.update(id, <%= classify(name) %>);
+  }
+
+  delete(id: string): HotObservableOnce<void> {
+    return this.<%= camelize(name) %>Db.delete(id);
+  }
+}
