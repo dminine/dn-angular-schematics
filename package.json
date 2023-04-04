@@ -1,10 +1,8 @@
 {
   "name": "dn-angular-schematics",
   "version": "0.0.0",
-
   "scripts": {
     "build:my-lib": "ng build dn-schematics && cd projects/dn-schematics && npm run build && npm run postbuild",
-    "test": "ng test",
     "npm:publish:verdaccio": "npm publish ./dist/dn-schematics",
     "generate:schematic:entity": "ng generate dn-schematics:entity-service --name my-data",
     "npm:publish:public": "cd dist/dn-schematics && npm publish --access public"
@@ -30,10 +28,6 @@
     "@angular/compiler-cli": "^15.2.5",
     "@types/jasmine": "~3.10.0",
     "@types/node": "^14.18.42",
-    "assert": "^2.0.0",
-    "buffer": "^6.0.3",
-    "crypto-browserify": "^3.12.0",
-    "https-browserify": "^1.0.0",
     "jasmine-core": "~4.0.0",
     "karma": "~6.3.0",
     "karma-chrome-launcher": "~3.1.0",
@@ -41,18 +35,6 @@
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
     "ng-packagr": "^15.2.2",
-    "os-browserify": "^0.3.0",
-    "path-browserify": "^1.0.1",
-    "process": "^0.11.10",
-    "stream-browserify": "^3.0.0",
-    "stream-http": "^3.2.0",
-    "typescript": "~4.8.4",
-    "url": "^0.11.0"
-  },
-  "browser": {
-    "fsevents": false,
-    "child_process": false,
-    "fs": false,
-    "readline": false
+    "typescript": "~4.8.4"
   }
 }

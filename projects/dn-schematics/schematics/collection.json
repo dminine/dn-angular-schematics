@@ -9,11 +9,6 @@
       "description": "Generate entity service and types typescript files",
       "factory": "./entity-service/index#entityService",
       "schema": "./entity-service/schema.json"
-    },
-    "pagination-list": {
-      "description": "Generate pagination lsit file",
-      "factory": "./pagination-list/index#entityService",
-      "schema": "./pagination-list/schema.json"
     }
   }
 }

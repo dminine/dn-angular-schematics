@@ -25,14 +25,10 @@
           "defaultConfiguration": "production"
         },
         "test": {
-          "builder": "@angular-builders/custom-webpack:karma",
+          "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "customWebpackConfig": {
-              "path": "./extra-webpack.config.js"
-            },
             "main": "projects/dn-schematics/src/test.ts",
-            "tsConfig": "projects/dn-schematics/tsconfig.spec.json",
-            "polyfills": "projects/dn-schematics/polyfills.ts"
+            "tsConfig": "projects/dn-schematics/tsconfig.spec.json"
           }
         }
       }
