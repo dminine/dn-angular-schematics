@@ -1,10 +1,7 @@
 {
   "name": "dn-schematics",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "author": "KevinYo",
-  "publishConfig": {
-    "registry": "http://localhost:4873"
-  },
   "scripts": {
     "build": "../../node_modules/.bin/tsc -p tsconfig.schematics.json",
     "copy:schemas": "rsync -R schematics/*/schema.json ../../dist/dn-schematics/",
