@@ -1,8 +1,9 @@
 {
   "name": "dn-angular-schematics",
-  "version": "0.0.0",
+  "version": "0.0.10",
   "scripts": {
     "build:my-lib": "ng build dn-schematics && cd projects/dn-schematics && npm run build && npm run postbuild",
+    "link": "npm link dist/dn-schematics",
     "npm:publish:verdaccio": "npm publish ./dist/dn-schematics",
     "generate:schematic:entity": "ng generate dn-schematics:entity-service --name my-data",
     "npm:publish:public": "cd dist/dn-schematics && npm publish --access public"
