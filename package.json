@@ -1,39 +1,58 @@
 {
   "name": "dn-angular-schematics",
   "version": "0.0.0",
+
   "scripts": {
     "build:my-lib": "ng build dn-schematics && cd projects/dn-schematics && npm run build && npm run postbuild",
+    "test": "ng test",
     "npm:publish:verdaccio": "npm publish ./dist/dn-schematics",
     "generate:schematic:entity": "ng generate dn-schematics:entity-service --name my-data",
     "npm:publish:public": "cd dist/dn-schematics && npm publish --access public"
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "^14.3.0",
-    "@angular/common": "^14.3.0",
-    "@angular/compiler": "^14.3.0",
-    "@angular/core": "^14.3.0",
-    "@angular/forms": "^14.3.0",
-    "@angular/platform-browser": "^14.3.0",
-    "@angular/platform-browser-dynamic": "^14.3.0",
-    "@angular/router": "^14.3.0",
+    "@angular/animations": "^15.2.5",
+    "@angular/common": "^15.2.5",
+    "@angular/compiler": "^15.2.5",
+    "@angular/core": "^15.2.5",
+    "@angular/forms": "^15.2.5",
+    "@angular/platform-browser": "^15.2.5",
+    "@angular/platform-browser-dynamic": "^15.2.5",
+    "@angular/router": "^15.2.5",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^14.2.11",
-    "@angular/cli": "^14.2.11",
-    "@angular/compiler-cli": "^14.3.0",
+    "@angular-builders/custom-webpack": "^15.0.0",
+    "@angular-devkit/build-angular": "^15.2.4",
+    "@angular/cli": "^15.2.4",
+    "@angular/compiler-cli": "^15.2.5",
     "@types/jasmine": "~3.10.0",
-    "@types/node": "^12.11.1",
+    "@types/node": "^14.18.42",
+    "assert": "^2.0.0",
+    "buffer": "^6.0.3",
+    "crypto-browserify": "^3.12.0",
+    "https-browserify": "^1.0.0",
     "jasmine-core": "~4.0.0",
     "karma": "~6.3.0",
     "karma-chrome-launcher": "~3.1.0",
     "karma-coverage": "~2.1.0",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
-    "ng-packagr": "^14.2.2",
-    "typescript": "~4.8.4"
+    "ng-packagr": "^15.2.2",
+    "os-browserify": "^0.3.0",
+    "path-browserify": "^1.0.1",
+    "process": "^0.11.10",
+    "stream-browserify": "^3.0.0",
+    "stream-http": "^3.2.0",
+    "typescript": "~4.8.4",
+    "url": "^0.11.0"
+  },
+  "browser": {
+    "fsevents": false,
+    "child_process": false,
+    "fs": false,
+    "readline": false
   }
 }
