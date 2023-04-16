@@ -12,7 +12,7 @@
 예제: kevin projects 의 board entity 추가
 
 ```
-ng generate dn-schematics:entity-service --name board
+ng generate dn-schematics:entity-service board
 
 CREATE src/entities/board/board.service.ts (1600 bytes)
 CREATE src/entities/board/types.ts (100 bytes)
@@ -33,4 +33,13 @@ export class NgBoardDb extends FirestoreDbAdapter<Board> {
     super(firebase.firestore(), 'boards'); <-- 해당 부분
   }
 }
+```
+
+### Admin Schematic 실행
+
+```
+ng generate dn-schematics:admin-list list-page
+ng generate dn-schematics:admin-detail detail-page
+ng generate dn-schematics:admin-add add-page
+ng generate dn-schematics:admin-modify modify-page
 ```
