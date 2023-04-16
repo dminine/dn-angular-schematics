@@ -1,0 +1,53 @@
+import { Component, OnInit } from '@angular/core';
+import { PaginationListBaseComponent } from '../../../../core/base-components/pagination-list-base.component';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { NgRouteService } from '../../../../../../../<%= libraryProjectName %>/src/lib/core/services/route.service';
+import { AdminTableHeader } from '../../../../modules/admin/components/table/table.component';
+import { fullDateFormatterForDate } from '../../../../../../../<%= libraryProjectName %>/src/lib/modules/pipe/pipes/utils';
+import { DbQuery, DbSortDirection } from '../../../../../../../../src/core/db/types';
+
+@Component({
+  selector: '<%= selector %>',
+  templateUrl: './<%= dasherize(name) %>.component.html',
+  styleUrls: ['./<%= dasherize(name) %>.component.scss'],
+})
+export class <%= classify(name) %>Component extends PaginationListBaseComponent<any> implements OnInit {
+  formGroup = this.createFormGroup();
+
+  adminTableHeaders: AdminTableHeader[] = [
+    { title: 'No', key: 'index' },
+    { title: '등록일', key: 'createdAt', formatter: fullDateFormatterForDate },
+  ];
+
+  constructor(
+    private fb: FormBuilder,
+    private routeService: NgRouteService,
+    protected ngService: NgService
+  ) {
+    super(ngService.paginationList.bind(ngService));
+  }
+
+  moveDetail(data: any): void {
+    this.routeService.navigate(['/notice/detail/', data.id]).then();
+  }
+
+  search(): void {
+    this.paginationList = this.ngService.paginationList(this.formGroup.value.keyword);
+
+    this.changeDocs();
+  }
+
+  protected override setDbQuery(): DbQuery {
+    return {
+      sorts: [
+        { field: 'createdAt', direction: DbSortDirection.Desc },
+      ],
+    };
+  }
+
+  private createFormGroup(): FormGroup {
+    return this.fb.group({
+      keyword: [''],
+    });
+  }
+}

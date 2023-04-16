@@ -1,0 +1,35 @@
+<h1 class="mat-h1"><%= name %> 리스트</h1>
+
+<mat-card class="list-card-box">
+  <mat-card-header>
+    <div class="list-card-header-box">
+      <button
+        type="button"
+        class="search-button"
+        mat-raised-button
+        color="primary"
+        routerLink="/<%= name %>/add"
+      >
+        추가
+      </button>
+    </div>
+  </mat-card-header>
+
+  <mat-card-content>
+    <app-table
+      [adminTableHeaders]="adminTableHeaders"
+      [data]="docs"
+      (rowClicked)="moveDetail($event)"
+      [totalCount]="totalCount"
+      [pageSize]="20"
+      [page]="page"
+    ></app-table>
+
+    <mat-paginator
+      [length]="totalCount"
+      [pageSize]="20"
+      (page)="changePage($event.previousPageIndex < $event.pageIndex)"
+    >
+    </mat-paginator>
+  </mat-card-content>
+</mat-card>

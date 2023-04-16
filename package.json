@@ -1,11 +1,14 @@
 {
   "name": "dn-angular-schematics",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "scripts": {
-    "build:my-lib": "ng build dn-schematics && cd projects/dn-schematics && npm run build && npm run postbuild",
-    "link": "npm link dist/dn-schematics",
+    "build:my-lib": "ng build dn-schematics && cd projects/dn-schematics && npm run build && npm run postbuild && cd ../../ && npm run copy:thirdPart",
+    "link": "npm link ./dist/dn-schematics",
+    "unlink": "npm unlink dist/dn-schematics",
     "generate:schematic:entity": "ng generate dn-schematics:entity-service --name my-data",
-    "npm:publish:public": "cd dist/dn-schematics && npm publish --access public"
+    "generate:schematic:adminList": "ng generate dn-schematics:admin-list --name list-page",
+    "npm:publish:public": "cd dist/dn-schematics && npm publish --access public",
+    "copy:thirdPart": "cp -a projects/dn-schematics/schematics/third_party dist/dn-schematics/schematics"
   },
   "private": true,
   "dependencies": {

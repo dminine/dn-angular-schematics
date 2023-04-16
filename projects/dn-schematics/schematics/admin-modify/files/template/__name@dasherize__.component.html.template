@@ -1,0 +1,43 @@
+<h1 class="mat-h1">수정</h1>
+
+<mat-card class="detail-form-card">
+  <mat-card-content>
+    <lib-form
+      [doc]="doc"
+      [adminFormControls]="adminFormControls"
+      [formGroup]="formGroup"
+      (valueChange)="formValue = $event"
+      (invalidChange)="invalid = $event"
+    >
+    </lib-form>
+  </mat-card-content>
+
+  <mat-card-footer>
+    <div class="detail-controller-box">
+      <div class="left-box"></div>
+
+      <div class="center-box">
+        <button
+          mat-raised-button
+          color="primary"
+          [disabled]="isLoading || formGroup.invalid"
+          (click)="modify()"
+        >
+          수정
+        </button>
+        <button mat-raised-button color="warn" (click)="back()">닫기</button>
+      </div>
+
+      <div class="right-box">
+        <button
+          mat-raised-button
+          color="accent"
+          [disabled]="isLoading || formGroup.invalid"
+          (click)="delete()"
+        >
+          삭제
+        </button>
+      </div>
+    </div>
+  </mat-card-footer>
+</mat-card>

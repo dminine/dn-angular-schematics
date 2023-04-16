@@ -1,0 +1,83 @@
+import { Component } from '@angular/core';
+import { ModifyBaseComponent } from '../../../../core/base-components/modify-base.component';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { NgRouteService } from '../../../../../../../<%= libraryProjectName %>/src/lib/core/services/route.service';
+import { Notifier } from '../../../../core/services/notifier.service';
+import {
+  AdminFormControl,
+  AdminFromControlType,
+} from '../../../../modules/admin/components/form/form.component';
+import { ActivatedRoute } from '@angular/router';
+
+@Component({
+  selector: '<%= selector %>',
+  templateUrl: './<%= dasherize(name) %>.component.html',
+  styleUrls: ['./<%= dasherize(name) %>.component.scss'],
+})
+export class <%= classify(name) %>Component extends ModifyBaseComponent<any> {
+  adminFormControls: AdminFormControl[];
+  formGroup = this.createFormGroup();
+
+  constructor(
+    private fb: FormBuilder,
+    private router: NgRouteService,
+    private service: NgService,
+    protected override route: ActivatedRoute,
+    protected override notifier: Notifier
+  ) {
+    super(
+      route,
+      {
+        getFn: service.get.bind(service),
+        deleteFn: service.delete.bind(service),
+        updateFn: service.update.bind(service),
+      },
+      notifier
+    );
+  }
+
+  back(): void {
+    this.router.back();
+  }
+
+  override onCompleted(): void {
+    this.back();
+  }
+
+  override afterInitDoc(): void {
+    this.adminFormControls = this.createAdminFormControls();
+  }
+
+  private createAdminFormControls(): AdminFormControl[] {
+    return [
+      {
+        label: '제목',
+        formControlName: 'title',
+        type: AdminFromControlType.INPUT,
+        placeholder: '제목을 입력하세요.',
+      },
+      {
+        label: '내용',
+        formControlName: 'contents',
+        type: AdminFromControlType.EDITOR,
+        placeholder: '내용을 입력하세요.',
+        dirPath: `/notice/${this.doc?.id}`,
+      },
+      {
+        label: '썸네일',
+        formControlName: 'thumbnail',
+        type: AdminFromControlType.IMAGE,
+        placeholder: '',
+        dirPath: `/notice/${this.doc?.id}`,
+      },
+    ];
+  }
+
+  private createFormGroup(): FormGroup {
+    return this.fb.group({
+      title: [null, Validators.required],
+      contents: [null, Validators.required],
+      thumbnail: [null, Validators.required],
+    });
+  }
+}

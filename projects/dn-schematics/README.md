@@ -3,10 +3,12 @@
 자주 사용하는 angular schematics generate 를 정의하는 서비스
 
 ## 프로젝트 구성 요소
+
 1. 빈 angular 프로젝트
 2. projects 하위의 dn-schematics library 프로젝트
 
 ## 프로젝트 구성 방법
+
 ```
 ng new dn-angular-shcematics --create-application false
 
@@ -39,22 +41,35 @@ collection.json 파일의 내용을 다음과 같이 작성합니다.
 {
   "name": "my-lib",
   "version": "0.0.1",
-  "schematics": "./schematics/collection.json",
+  "schematics": "./schematics/collection.json"
 }
 ```
 
-
 ## Schematics Build
+
 먼저 아래 Script 를 실행한다
+
 ```
 build:my-lib
 ```
+
 이후에 아래 Script 를 실행한다
+
 ```
 build:mac
 ```
 
 ## Entity Schematic 실행
+
 ```
-ng generate dn-schematics:entity-service --name my-data
+ng generate dn-schematics:entity-service my-data
+```
+
+## Admin Schematic 실행
+
+```
+ng generate dn-schematics:admin-list list-page
+ng generate dn-schematics:admin-detail detail-page
+ng generate dn-schematics:admin-add add-page
+ng generate dn-schematics:admin-modify modify-page
 ```

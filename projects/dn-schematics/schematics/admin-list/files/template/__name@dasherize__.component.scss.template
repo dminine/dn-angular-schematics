@@ -1,0 +1,38 @@
+@import 'core';
+
+.list-card-box {
+  margin-bottom: $spacing-xl;
+}
+
+.list-card-header-box {
+  @include flex-center-end;
+  width: 100%;
+}
+
+.search-box {
+  @include flex-start();
+
+  .form-control {
+    margin-right: $spacing-l;
+  }
+
+  .search-keyword-control {
+    flex: 1;
+    width: 100%;
+    mat-form-field {
+      display: block;
+    }
+  }
+
+  .search-button {
+    height: 52px;
+  }
+}
+
+.table-controller-box {
+  @include flex-center-end();
+
+  button {
+    @include margin-right-without-last-child($spacing-s);
+  }
+}

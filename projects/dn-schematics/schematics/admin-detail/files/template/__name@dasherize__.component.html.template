@@ -1,0 +1,35 @@
+<h1 class="mat-h1">상세</h1>
+
+<mat-card>
+  <mat-card-content>
+    <div class="info-group-box">
+      <div class="info-box">
+        <label class="admin-label">제목</label>
+
+        <p class="body-1">{{ data?.title }}</p>
+      </div>
+
+      <div class="info-box">
+        <label class="admin-label">순서</label>
+
+        <p class="body-1">{{ data?.order }}</p>
+      </div>
+    </div>
+  </mat-card-content>
+
+  <mat-card-footer>
+    <div class="detail-controller-box">
+      <div class="left-box"></div>
+
+      <div class="center-box">
+        <button mat-raised-button (click)="back()">목록</button>
+      </div>
+
+      <div class="right-box">
+        <button mat-raised-button color="accent" [routerLink]="['/notice/modify', data?.id]">
+          수정
+        </button>
+      </div>
+    </div>
+  </mat-card-footer>
+</mat-card>

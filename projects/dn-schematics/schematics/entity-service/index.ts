@@ -13,49 +13,37 @@ import {
 import {
   strings,
   normalize,
-  virtualFs,
   workspaces,
 } from '@angular-devkit/core';
 
 import { Schema as MyServiceSchema } from './schema';
-
-function createHost(tree: Tree): workspaces.WorkspaceHost {
-  return {
-    async readFile(path: string): Promise<string> {
-      const data = tree.read(path);
-      if (!data) {
-        throw new SchematicsException('File not found.');
-      }
-      return virtualFs.fileBufferToString(data);
-    },
-
-    async writeFile(path: string, data: string): Promise<void> {
-      return tree.overwrite(path, data);
-    },
-
-    async isDirectory(path: string): Promise<boolean> {
-      return !tree.exists(path) && tree.getDir(path).subfiles.length > 0;
-    },
-
-    async isFile(path: string): Promise<boolean> {
-      return tree.exists(path);
-    },
-  };
-}
+import { findModuleFromOptions } from '../utility/find-module';
+import { createHost } from '../utils';
 
 export function entityService(options: MyServiceSchema): Rule {
   return async (tree: Tree) => {
     const host = createHost(tree);
     const { workspace } = await workspaces.readWorkspace('/', host);
 
-    if (!options.project) {
-      options.project = workspace.extensions['defaultProject'] as any;
-    }
+    console.log('entityService workspace : ', workspace);
 
     const project = workspace.projects.get(options.project);
 
+    console.log('project : ', project);
+
+    options.module = findModuleFromOptions(tree, options);
+
+    console.log('options', options);
+    //
+    // addDeclarationToNgModule({
+    //   type: 'component',
+    //   ...options,
+    // });
+
     if (!project) {
-      throw new SchematicsException(`Invalid project name: ${options.project}`);
+      throw new SchematicsException(
+        `프로젝트 ${options.project} 은 존재하지 않습니다. 옵션에 프로젝트를 추가 혹은 변경 해주세요.`
+      );
     }
 
     if (options.path === undefined) {

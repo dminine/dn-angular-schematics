@@ -9,6 +9,26 @@
       "description": "Generate entity service and types typescript files",
       "factory": "./entity-service/index#entityService",
       "schema": "./entity-service/schema.json"
+    },
+    "admin-list": {
+      "description": "Generate Dn admin list component",
+      "factory": "./admin-list/index#adminList",
+      "schema": "./admin-list/schema.json"
+    },
+    "admin-add": {
+      "description": "Generate Dn admin add component",
+      "factory": "./admin-add/index#adminAdd",
+      "schema": "./admin-add/schema.json"
+    },
+    "admin-modify": {
+      "description": "Generate Dn admin modify component",
+      "factory": "./admin-modify/index#adminModify",
+      "schema": "./admin-modify/schema.json"
+    },
+    "admin-detail": {
+      "description": "Generate Dn admin detail component",
+      "factory": "./admin-detail/index#adminDetail",
+      "schema": "./admin-detail/schema.json"
     }
   }
 }

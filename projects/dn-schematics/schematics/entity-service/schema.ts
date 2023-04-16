@@ -7,4 +7,7 @@ export interface Schema {
 
   // 프로젝트 이름
   project: string;
+
+  // 모듈
+  module?: string;
 }

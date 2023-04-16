@@ -1,0 +1,29 @@
+import { Component, OnInit } from '@angular/core';
+import { NgRouteService } from '../../../../../../../<%= libraryProjectName %>/src/lib/core/services/route.service';
+import { SubscriptionBaseComponent } from '../../../../../../../<%= libraryProjectName %>/src/lib/core/base-components/subscription/subscription-base.component';
+import { Observable } from 'rxjs';
+
+@Component({
+  selector: '<%= selector %>',
+  templateUrl: './<%= dasherize(name) %>.component.html',
+  styleUrls: ['./<%= dasherize(name) %>.component.scss'],
+})
+export class <%= classify(name) %>Component extends SubscriptionBaseComponent implements OnInit {
+  data: any;
+
+  constructor(private router: NgRouteService, private service: NgService) {
+    super();
+  }
+
+  ngOnInit(): void {
+    this.setObservable('data', 'data', this.initEntity());
+  }
+
+  back(): void {
+    this.router.back();
+  }
+
+  private initEntity(): Observable<any> {
+    return this.router.getEntity(this, this.service, 'get');
+  }
+}
