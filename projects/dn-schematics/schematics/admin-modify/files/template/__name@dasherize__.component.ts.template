@@ -6,7 +6,7 @@ import { Notifier } from '../../../../core/services/notifier.service';
 import {
   AdminFormControl,
   AdminFromControlType,
-} from '../../../../modules/admin/components/form/form.component';
+} from '../../../../../../../<%= libraryProjectName %>/src/lib/modules/admin/components/form/form.component';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({

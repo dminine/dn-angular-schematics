@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { PaginationListBaseComponent } from '../../../../core/base-components/pagination-list-base.component';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { NgRouteService } from '../../../../../../../<%= libraryProjectName %>/src/lib/core/services/route.service';
-import { AdminTableHeader } from '../../../../modules/admin/components/table/table.component';
+import {
+  AdminTableHeader
+} from '../../../../../../../<%= libraryProjectName %>/src/lib/modules/admin/components/table/table.component';
 import { fullDateFormatterForDate } from '../../../../../../../<%= libraryProjectName %>/src/lib/modules/pipe/pipes/utils';
 import { DbQuery, DbSortDirection } from '../../../../../../../../src/core/db/types';
 
