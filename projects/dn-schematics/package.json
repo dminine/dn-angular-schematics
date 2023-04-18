@@ -1,6 +1,6 @@
 {
   "name": "dn-schematics",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "author": "KevinYo",
   "scripts": {
     "build": "../../node_modules/.bin/tsc -p tsconfig.schematics.json",
