@@ -24,6 +24,10 @@ export class <%= classify(name) %>Service {
     protected <%= camelize(name) %>Db: DbAdapter<<%= classify(name) %>>,
   ) {}
 
+  createId(): string {
+    return this.<%= camelize(name) %>Db.createId();
+  }
+
   getDocumentSnapShot(
     id: string
   ): ColdObservableOnce<DocumentSnapshot<DocumentData>> {

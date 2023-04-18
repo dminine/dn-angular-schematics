@@ -10,14 +10,9 @@ import {
   mergeWith,
 } from '@angular-devkit/schematics';
 
-import {
-  strings,
-  normalize,
-  workspaces,
-} from '@angular-devkit/core';
+import { strings, normalize, workspaces } from '@angular-devkit/core';
 
 import { Schema as MyServiceSchema } from './schema';
-import { findModuleFromOptions } from '../utility/find-module';
 import { createHost } from '../utils';
 
 export function entityService(options: MyServiceSchema): Rule {
@@ -25,20 +20,7 @@ export function entityService(options: MyServiceSchema): Rule {
     const host = createHost(tree);
     const { workspace } = await workspaces.readWorkspace('/', host);
 
-    console.log('entityService workspace : ', workspace);
-
     const project = workspace.projects.get(options.project);
-
-    console.log('project : ', project);
-
-    options.module = findModuleFromOptions(tree, options);
-
-    console.log('options', options);
-    //
-    // addDeclarationToNgModule({
-    //   type: 'component',
-    //   ...options,
-    // });
 
     if (!project) {
       throw new SchematicsException(
