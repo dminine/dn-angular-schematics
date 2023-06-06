@@ -4,7 +4,7 @@ import { NgRouteService } from '../../../../../../../<%= libraryProjectName %>/s
 import {
   AdminFormControl,
   AdminFromControlType,
-} from '../../../../../../../<%= libraryProjectName %>/src/lib/modules/admin/components/form/form.component';
+} from '../../../../../../../<%= libraryProjectName %>/src/lib/modules/admin/components/admin-form/admin-form.component';
 import { AddBaseComponent } from '../../../../core/base-components/add-base.component';
 import { Notifier } from '../../../../core/services/notifier.service';
 

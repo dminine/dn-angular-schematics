@@ -1,6 +1,8 @@
-<h1 class="mat-h1">상세</h1>
+<mat-card class="detail-form-card">
+  <mat-card-header>
+    <h1 class="card-title"><%= name %> 수정</h1>
+  </mat-card-header>
 
-<mat-card>
   <mat-card-content>
     <div class="info-group-box">
       <div class="info-box">
@@ -26,7 +28,7 @@
       </div>
 
       <div class="right-box">
-        <button mat-raised-button color="accent" [routerLink]="['/notice/modify', data?.id]">
+        <button mat-raised-button color="accent" [routerLink]="['/<%= name %>/modify', data?.id]">
           수정
         </button>
       </div>
