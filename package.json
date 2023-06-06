@@ -1,6 +1,6 @@
 {
   "name": "dn-angular-schematics",
-  "version": "0.0.11",
+  "version": "0.0.14",
   "scripts": {
     "build:my-lib": "ng build dn-schematics && cd projects/dn-schematics && npm run build && npm run postbuild && cd ../../ && npm run copy:thirdPart",
     "link": "npm link ./dist/dn-schematics",
